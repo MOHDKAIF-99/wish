@@ -3,7 +3,7 @@ const CONFIG={
   name:"Cutie",
   date:"2026-10-30T00:00:00",   // countdown target
   lock:false,                    // true = 30 Oct se pehle "Open" nahi khulega
-  key:"YOUR_WEB3FORMS_ACCESS_KEY",
+  key:"4c48eec8-10b5-4e5d-b8a8-34eb86de86d7",
   letter:"Happy Birthday, meri jaan! 🎂\nTum mere liye bahut special ho. Tumhari smile se hi mera din ban jaata hai. Ye chhota sa surprise sirf tumhare liye hai.\nHamesha aise hi hasti raho 💗",
   quiz:[
     {q:"Mujhe tumhari sabse achhi baat kaun si lagti hai?",o:[["Teri smile 😊","Sahi pakda! Wahi toh meri jaan hai 💖"],["Teri baatein 💬","Baatein karte karte time ka pata hi nahi chalta 🥹"],["Tera gussa 😤","Haha! Gussa mein bhi cute lagti ho 😂"],["Sab kuch 💕","Bilkul sahi jawab! 🏆"]]},
