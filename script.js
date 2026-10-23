@@ -1,14 +1,18 @@
 /* ====== YAHAN APNA CONTENT BADLO ====== */
 const CONFIG={
-  name:"Cutie",
+  name:"Cutie ",
   date:"2026-10-30T00:00:00",   // countdown target
   lock:false,                    // true = 30 Oct se pehle "Open" nahi khulega
   key:"4c48eec8-10b5-4e5d-b8a8-34eb86de86d7",
-  letter:"Happy Birthday, meri jaan! 🎂\nTum mere liye bahut special ho. Tumhari smile se hi mera din ban jaata hai. Ye chhota sa surprise sirf tumhare liye hai.\nHamesha aise hi hasti raho 💗",
+  letter:"To the prettiest girl, I just want to remind you how breathtaking you are. The moment you smile, everything lights up; it is the cutest thing ever. Those warm brown eyes of yours, framed by the most amazing eyelashes, make it completely impossible to look away. And your hair is genuinely on a whole other level of effortless perfection.You are stunning without even trying, but it is your sweet, gentle heart that makes you truly unforgettable. May your birthday bring you all the warmth, joy, and peace you deserve.",
   quiz:[
-    {q:"Mujhe tumhari sabse achhi baat kaun si lagti hai?",o:[["Teri smile 😊","Sahi pakda! Wahi toh meri jaan hai 💖"],["Teri baatein 💬","Baatein karte karte time ka pata hi nahi chalta 🥹"],["Tera gussa 😤","Haha! Gussa mein bhi cute lagti ho 😂"],["Sab kuch 💕","Bilkul sahi jawab! 🏆"]]},
-    {q:"Perfect birthday plan kya hoga?",o:[["Cake + movie 🍿","Done! Popcorn meri taraf se 😎"],["Long drive 🚗","Playlist ready hai 🎶"],["Surprise party 🎉","Shh… kuch bhi ho sakta hai 🤫"],["Bas tum aur main ☕","Yehi toh sabse best hai 💞"]]},
+    {q:"Mujhe tumhari sabse achhi baat kaun si lagti hai?",o:[["Tumhare  smile 😊","ha woh toh haii  💖"],["Tumhare  baatein 💬","Baatein karte karte time ka pata hi nahi chalta 🥹"],["tumhare brown eyes  "," ha mai toh kho jata hu tumhare eyes maii " ],["Sab kuch 💕","Bilkul sahi jawab! 🏆"]]},
+    {q:"Perfect birthday plan kya hoga?",o:[["Cake + movie 🍿","Done! Popcorn meri taraf se 😎"],["Long drive 🚗","Playlist ready hai 🎶"],["Surprise party 🎉","Shh… kuch bhi ho sakta hai 🤫"],["gaming zone and food ","ok done book kar de raha 💞"]]},
+    {q:"Meri sabse irritating habit kaun si hai?",o:[["Late reply dena 📵","Sorry! Ab fast reply karunga 🏃"],["rudeness","ok  i'll improve myself "],["Phone mein busy rehna 📱","Aaj ke baad phone down 🙏"],["Kuch nahi, tum perfect ho 😇","Oo "]]},
+     {q:"Meri sabse achhi baat kya lagti hai tumhe?",o:[["Meri smile 😁","Smile ka copyright tumhare paas hai 😌"],["Notice small deatils about youu 🤗","Hamesha rahegi 💗"],["Mera humor 😂","Mera joke tumhe hasaaye, bas yehi chahiye 🤭"],["Sab kuch ","Bilkul sahi jawab! 🏆"]]},
+     {q:"Aakhri sawaal: ye surprise kaisa laga?",o:[["Bahut pyaara 🥹","Tumhari smile hi kafi haii 💖"],["Mujhe rona aa gaya 😭","Oo  🤗"],["Superb! 🤩","Ab next surprise ka wait karo 😉"],["Tum best ho ","Tum bhi best ho, Happy Birthday In Advance ! 🎂"]]},
     {q:"Agle saal ke liye meri wish?",o:[["Tum hamesha khush raho 🌈","Meri bhi yehi wish hai 🥰"],["Hum zyada ghoomein ✈️","Bags pack karo! 🧳"],["Aur zyada cake 🍰","Cake ka budget approved ✅"]]}
+    
   ]
 };
 /* ======================================= */
@@ -33,7 +37,23 @@ $('#lt').onclick=()=>{clearInterval(tt);$('#lt').textContent=CONFIG.letter};
 $('#b2').onclick=()=>{clearInterval(tt);go(3)};
 
 /* cake */
-$('#wish').onclick=()=>{$('#cake').classList.add('out');boom(40);$('#c1').textContent='Your wish is on its way ✨';$('#c2').textContent='Kahin ek tara bola: “haan!” 🌟';$('#wish').hidden=true;$('#b3').hidden=false};
+
+/* cake */
+const CAKE='<div class="ck"><div class="cn"><u></u><u></u><u></u></div><div class="t t3"></div><div class="t t2"></div><div class="t t1"></div></div>';
+['.half.l','.half.r','.core'].forEach(s=>$(s).innerHTML=CAKE);
+const vibe=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+function burst(){const r=$('#stage').getBoundingClientRect(),em=['✨','💖','🎉','⭐'];
+ for(let i=0;i<22;i++){const e=document.createElement('i'),a=i/22*6.283,d=80+Math.random()*90;e.className='sp';e.textContent=em[i%4];
+  e.style.cssText=`left:${r.left+r.width/2}px;top:${r.top+r.height/2}px;--dx:${Math.cos(a)*d}px;--dy:${Math.sin(a)*d}px`;
+  document.body.appendChild(e);setTimeout(()=>e.remove(),1400)}}
+let cutDone=false;
+function cutCake(){if(cutDone)return;cutDone=true;const s=$('#stage');$('#cut').hidden=true;s.classList.add('down');
+ setTimeout(()=>{s.classList.add('hit');vibe([60,40,140])},900);
+ setTimeout(()=>{s.classList.add('cut');burst();boom(50)},1000);
+ setTimeout(()=>{$('#c1').textContent='Happy Birthday 🎂';$('#c2').textContent='Cake cut ho gaya! 🎉';$('#slice').classList.add('show');$('#sl').hidden=false;$('#b3').hidden=false},1700)}
+$('#wish').onclick=()=>{$('#stage').classList.add('out');vibe([80]);boom(30);$('#c1').textContent='Wish ho gayi ✨';$('#c2').textContent='Ab cake kaato! 🔪';$('#wish').hidden=true;$('#cut').hidden=false};
+$('#cut').onclick=cutCake;
+$('#stage').onclick=()=>{if(!$('#cut').hidden)cutCake()};
 $('#b3').onclick=()=>go(4);
 
 /* quiz */
